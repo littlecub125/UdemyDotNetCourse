@@ -1,0 +1,45 @@
+﻿@model Category
+
+<form method="post">
+    <div class action="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Create Category</h2>
+            <hr/>
+        </div>
+        @*모든 에러 메시지를 한번에 표시하고 싶을시*@
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3 row p-1">
+          @*   <label class="p-0">Category Name</label> *@
+            <label asp-for=Name class="p-0"></label>
+            <input asp-for="Name" class="form-control"/>
+            @* Validation error문구 UI적용 *@
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
+        @*     <label class ="p-0">Display Order</label> *@
+            <label asp-for=DisplayOrder class="p-0"></label>
+            <input asp-for="DisplayOrder" class="form-control" />
+            @* Validation error문구 UI적용 *@
+            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-primary form-control">Create</button>
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-controller="Category" asp-action="Index" class="btn btn-secondary border form-control">
+                    Back To List
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+
+@*Client Side Validation*@
+@section Scripts{
+    @{
+        <partial name = "_ValidationScriptsPartial"/>
+    }
+}
